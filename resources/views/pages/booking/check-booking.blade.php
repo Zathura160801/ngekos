@@ -22,17 +22,17 @@
                         <img src="assets/images/icons/note-favorite-grey.svg" class="w-5 h-5 flex shrink-0" alt="icon">
                         <input type="text" name="code" id=""
                             class="appearance-none outline-none w-full font-semibold placeholder:text-ngekos-grey placeholder:font-normal"
-                            placeholder="Write your booking id" value={{ old('code') }}>
+                            placeholder="Write your booking id" value="{{ old('code') }}">
                     </label>
 
                     @error('code')
-                        <p class="text-sm text-red-500">{{ $message }}</p>
+                        <p class="text-red-500 text-sm">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="flex flex-col w-full gap-2">
                     <p class="font-semibold">Email Address</p>
                     <label
-                        class="flex items-center w-full rounded-full p-[14px_20px] gap-3 bg-white ring-1 ring-[#F1F2F6] focus-within:ring-[#91BF77] transition-all duration-300 @error('email') border-red-500 @enderror">
+                        class="flex items-center w-full rounded-full p-[14px_20px] gap-3 bg-white ring-1 ring-[#F1F2F6] focus-within:ring-[#91BF77] transition-all duration-300 @error('code') border-red-500 @enderror">
                         <img src="assets/images/icons/sms.svg" class="w-5 h-5 flex shrink-0" alt="icon">
                         <input type="email" name="email" id=""
                             class="appearance-none outline-none w-full font-semibold placeholder:text-ngekos-grey placeholder:font-normal"
@@ -40,7 +40,7 @@
                     </label>
 
                     @error('email')
-                        <p class="text-sm text-red-500">{{ $message }}</p>
+                        <p class="text-red-500 text-sm">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="flex flex-col w-full gap-2">
@@ -54,12 +54,12 @@
                     </label>
 
                     @error('phone_number')
-                        <p class="text-sm text-red-500">{{ $message }}</p>
+                        <p class="text-red-500 text-sm">{{ $message }}</p>
                     @enderror
                 </div>
 
                 @if (session('error'))
-                    <p class="text-sm text-red-500">{{ session('error') }}</p>
+                    <p class="text-red-500 text-sm">{{ session('error') }}</p>
                 @endif
 
                 <button type="submit"

@@ -13,7 +13,7 @@ class MidtransController extends Controller
         $serverKey = config('midtrans.server_key');
         $hashedKey = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
 
-        if($hashedKey !== $request->signature_key) {
+        if ($hashedKey !== $request->signature_key) {
             return response()->json(['message' => 'Invalid signature key'], 403);
         }
 
@@ -21,7 +21,7 @@ class MidtransController extends Controller
         $orderId = $request->order_id;
         $transaction = Transaction::where('code', $orderId)->first();
 
-        if(!$transaction) {
+        if (!$transaction) {
             return response()->json(['message' => 'Transaction not found'], 404);
         }
 
@@ -55,6 +55,6 @@ class MidtransController extends Controller
                 break;
         }
 
-        return response()->json(['message' => 'Callback received successfully']);
+        return response()->json(['message' => 'Callback received successfully'], 200);
     }
 }
